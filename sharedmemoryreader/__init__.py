@@ -7,3 +7,5 @@ SharedMemoryReader for MDAnalysis
 from importlib.metadata import version
 
 __version__ = version("sharedmemoryreader")
+
+from .sharedmemoryreader import SharedMemoryReader, transfer_to_shared_memory
