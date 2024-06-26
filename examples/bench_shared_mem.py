@@ -44,7 +44,7 @@ def main(n_frames: int, n_cores: int):
             pairwise_rmsd[i][j] = output.pop(0)
             pairwise_rmsd[j][i] = pairwise_rmsd[i][j]
     
-    np.save('pairwise_rmsd.npy', pairwise_rmsd)
+    np.save(f'pairwise_rmsd_parallel_{n_frames}.npy', pairwise_rmsd)
     print('Pairwise RMSD calculation is done!')
 
     elapsed_time = end_time - start_time  # Calculate elapsed time

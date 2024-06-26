@@ -38,7 +38,11 @@ def main(n_frames: int):
             pairwise_rmsd[i][j] = calculate_rmsd(protein, i, j)
     end_time = time.time()  # End timing
 
-    np.save('pairwise_rmsd.npy', pairwise_rmsd)
+    # add results for the other half of the matrix
+    for i in range(1, u.trajectory.n_frames):
+        for j in range(i):
+            pairwise_rmsd[i][j] = pairwise_rmsd[j][i]
+    np.save(f'pairwise_rmsd_serial_{n_frames}.npy', pairwise_rmsd)
     print('Pairwise RMSD calculation is done!')
 
     elapsed_time = end_time - start_time  # Calculate elapsed time
